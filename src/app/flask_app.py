@@ -1,7 +1,7 @@
 import flask
 from flask import request, render_template, redirect
 
-from src.predict import make_a_prediction
+from src.model_predict import model_predict
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -15,16 +15,15 @@ def predict():
     if request.method == "POST":
         # Alternatively
 
-        sepal_width = int(request.form["sepal_width"])
         sepal_length = int(request.form["sepal_length"])
-        petal_width = int(request.form["petal_width"])
+        sepal_width = int(request.form["sepal_width"])
         petal_length = int(request.form["petal_length"])
+        petal_width = int(request.form["petal_width"])
 
-
-        prediction = make_a_prediction(sepal_width, sepal_length, petal_width, petal_length)
+        prediction = model_predict([sepal_length, sepal_width, petal_length, petal_width])
         return render_template("predict.html", prediction=str(prediction))
 
-        return redirect(request.url)
+        #return redirect(request.url)
 
     return render_template("predict.html")
 
