@@ -4,7 +4,6 @@ import sys
 
 def predict(feature_values):
     model = load("models/logistic_regressor")
-
     data_new = pd.DataFrame([feature_values])
     prediction = model.predict(data_new)
 
