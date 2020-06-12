@@ -1,0 +1,9 @@
+FROM alpine:3.12
+
+COPY models/* .
+COPY src/* . 
+COPY requirements.txt .
+
+RUN pip install requirements.txt
+
+CMD ["python"] src/model_predict.py
