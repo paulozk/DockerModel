@@ -1,11 +1,15 @@
 FROM python:3
 
-WORKDIR /usr/src
+WORKDIR /usr/
 
+COPY app app
 COPY models models
-COPY src src
+
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-CMD python src/model_predict.py
+ENV FLASK_APP=app/flask_app.py
+
+CMD flask run --host=0.0.0.0 
+
