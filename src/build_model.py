@@ -11,4 +11,4 @@ train_y = data.iloc[:, -1]
 
 model.fit(train_x, train_y)
 
-dump(model, "models/logistic_regressor")
+dump(model, "models/logistic_regressor.pkl")
